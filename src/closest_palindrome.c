@@ -11,17 +11,16 @@
 
 char *strrev(char *str)
 {
-      char *p1, *p2;
+    char *p1, *p2;
 
-      if (! str || ! *str)
-            return str;
-      for (p1 = str, p2 = str + strlen(str) - 1; p2 > p1; ++p1, --p2)
-      {
-            *p1 ^= *p2;
-            *p2 ^= *p1;
-            *p1 ^= *p2;
-      }
-      return str;
+    if (! str || ! *str)
+        return (str);
+    for (p1 = str, p2 = str + strlen(str) - 1; p2 > p1; ++p1, --p2) {
+        *p1 ^= *p2;
+        *p2 ^= *p1;
+        *p1 ^= *p2;
+    }
+    return (str);
 }
 
 int check_palindrome(char *n)
@@ -30,9 +29,10 @@ int check_palindrome(char *n)
 
     strcpy(nr, n);
     strrev(nr);
+    printf("nr = %s\nn = %s\n", nr, n);
     if (strcmp(nr, n) == 0)
         return (1);
-    return (0);    
+    return (0);
 }
 
 char *plus(char *str, int i)
@@ -64,6 +64,6 @@ char *nearestPalindromic(char *n)
     if (check_palindrome(minus(n, i)) == 1)
         return (minus(n, i));
     if (check_palindrome(plus(n, i)) == 1)
-        return (minus(n, i));
+        return (plus(n, i));
     return (0);
 }
