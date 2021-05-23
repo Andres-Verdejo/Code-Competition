@@ -37,7 +37,7 @@ int check_palindrome(char *n)
 
 char *plus(char *str, int i)
 {
-    int num = atoi(str);
+    long long int num = atoll(str);
     char *number = malloc(100);
 
     num += i;
@@ -47,7 +47,7 @@ char *plus(char *str, int i)
 
 char *minus(char *str, int i)
 {
-    int num = atoi(str);
+    long long int num = atoll(str);
     char *number = malloc(100);
 
     num -= i;
