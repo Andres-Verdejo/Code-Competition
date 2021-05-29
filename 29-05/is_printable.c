@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 typedef struct grid_s {
     int **grid;
@@ -26,8 +27,8 @@ grid_t *get_grid(int **targetGrid, int targetGridSize, int* targetGridColSize)
     grid_t *grid = malloc(sizeof(grid_t));
 
     grid->grid = targetGrid;
-    grid->size = targetGridSize;
     grid->colSize = targetGridColSize;
+    grid->size = targetGridSize;
     return (grid);
 }
 
