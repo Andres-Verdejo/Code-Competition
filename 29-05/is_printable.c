@@ -128,16 +128,18 @@ rect_t *get_rekt(grid_t *grid, int num)
 
 int check_rect(rect_t *rect, grid_t *grid, int num)
 {
-    int i = rect.left;
-    int j = rect.top;
+    int i = rect->left;
+    int j = rect->top;
 
-    while (j <= rect.right) {
-        while (i <= rect.bottom) {
+    printf("rect left = %d\nrect right = %d\nrect top = %d\nrect bottom = %d\n", rect->left, rect->right, rect->top, rect->bottom);
+    while (j <= rect->right) {
+        while (i <= rect->bottom) {
+            printf("i = %d\nj = %d\n", i, j);
             if (grid->grid[j][i] < num)
                 return (1);
-            j++;
+            i++;
         }
-        i = rect.left;
+        i = rect->left;
         j++;
     }
     return (0);
