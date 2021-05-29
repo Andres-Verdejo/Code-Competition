@@ -149,7 +149,7 @@ bool isPrintable(int **targetGrid, int targetGridSize, int* targetGridColSize)
     int num = 0;
 
     while (num != -1) {
-        num  = next_num;
+        num  = next_num(grid, num);
         if(check_rect(get_rekt(grid, num), grid, num) == 1);
             return (false);
     }
