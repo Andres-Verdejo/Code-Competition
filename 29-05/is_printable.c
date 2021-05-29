@@ -50,6 +50,7 @@ int count_diff(grid_t *grid)
         i = 0;
         j++;
     }
+    printf("diff : %d\n", diff);
     return (diff);
 }
 
@@ -60,8 +61,10 @@ int next_num(grid_t *grid, int num)
 
     while (j < grid->size) {
         while (i < grid->colSize[j]) {
+            printf("is %d < %d\n", num, grid->grid[j][i]    );
             if (num < grid->grid[j][i]) {
                 num = grid->grid[j][i];
+                printf("next num : %d\n", num);
                 return (num);
             }
             i++;
@@ -69,6 +72,7 @@ int next_num(grid_t *grid, int num)
         i = 0;
         j++;
     }
+    printf("return -1\n");
     return (-1);
 }
 
@@ -131,10 +135,12 @@ int check_rect(rect_t *rect, grid_t *grid, int num)
     int i = rect->left;
     int j = rect->top;
 
+    printf("num: %d\n", num);
     printf("rect left = %d\nrect right = %d\nrect top = %d\nrect bottom = %d\n", rect->left, rect->right, rect->top, rect->bottom);
-    while (j <= rect->right) {
-        while (i <= rect->bottom) {
+    while (j <= rect->bottom) {
+        while (i <= rect->right) {
             printf("i = %d\nj = %d\n", i, j);
+            printf("%d < %d = grid->grid[%d][%d]\n", grid->grid[j][i], num, j, i);
             if (grid->grid[j][i] < num)
                 return (1);
             i++;
@@ -155,15 +161,12 @@ bool isPrintable(int **targetGrid, int targetGridSize, int* targetGridColSize)
 
     while (num != -1) {
         num = next_num(grid, num);
-        rect = get_rekt(grid, num);
-        if(check_rect(rect, grid, num) == 1) {
-            free(rect);
-            free(grid);
+        if (num == -1)
             return (false);
-        }
+        rect = get_rekt(grid, num);
+        if(check_rect(rect, grid, num) == 1)
+            return (false);
         free(rect);
     }
-    free(rect);
-    free(grid);
     return (true);
 }
