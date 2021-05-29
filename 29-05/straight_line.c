@@ -19,8 +19,8 @@ vector_t get_vector(int x1, int y1, int x2, int y2)
     vector_t vector;
     float mod;
 
-    vector.x = (x2 - x1);
-    vector.y = (y2 - y1);
+    vector.x = abs(x2 - x1);
+    vector.y = abs(y2 - y1);
     mod = sqrt(pow(vector.x, 2) + pow(vector.y , 2));
     vector.x = vector.x / mod;
     vector.y = vector.y / mod;
@@ -45,5 +45,4 @@ bool checkStraightLine(int** coordinates, int coordinatesSize, int* coordinatesC
         j++;
     }
     return (true);
-
 }
