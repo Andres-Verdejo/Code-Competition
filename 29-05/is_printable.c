@@ -93,7 +93,7 @@ rect_t first_rect(grid_t *grid, int num)
 
     while (j < grid->size) {
         while (i < grid->colSize[j]) {
-            if (grid->grid[j][i]) {
+            if (grid->grid[j][i] == num) {
                 rect.bottom = j;
                 rect.top = j;
                 rect.left = i;
@@ -123,6 +123,7 @@ rect_t get_rekt(grid_t *grid, int num)
         i = 0;
         j++;
     }
+    return (rect);
 }
 
 int check_rect(rect_t rect, grid_t *grid, int num)
