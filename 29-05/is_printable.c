@@ -162,7 +162,7 @@ bool isPrintable(int **targetGrid, int targetGridSize, int* targetGridColSize)
     while (num != -1) {
         num = next_num(grid, num);
         if (num == -1)
-            return (false);
+            return (true);
         rect = get_rekt(grid, num);
         if(check_rect(rect, grid, num) == 1)
             return (false);
